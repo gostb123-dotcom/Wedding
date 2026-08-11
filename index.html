@@ -315,7 +315,6 @@
         .couple-name {
             font-family: 'Caveat', cursive;
             font-size: 30px;
-    
         }
 
         /* ===== RSVP & CALENDAR ===== */
@@ -470,14 +469,6 @@
 </head>
 <body>
 
-    <!-- ===== MUSIC ===== -->
-    <!-- 
-        ИНСТРУКЦИЯ ПО ЗАМЕНЕ МУЗЫКИ:
-        1. Подготовьте ваш MP3-файл (желательно до 5 МБ)
-        2. Переименуйте его в music.mp3
-        3. Загрузите music.mp3 вместе с этим HTML-файлом на хостинг
-        4. Готово! Музыка будет играть автоматически
-    -->
     <audio id="wedding-music" loop>
         <source src="music.mp3" type="audio/mpeg">
         Ваш браузер не поддерживает аудио.
@@ -493,23 +484,6 @@
             <path class="note2" d="M19 4L22 3"/>
         </svg>
     </button>
-
-    <!-- 
-        ИНСТРУКЦИЯ ПО ЗАМЕНЕ ФОТО:
-
-        1. Подготовьте 5 фото в формате JPG или PNG
-        2. Переименуйте их точно так:
-           - photo1.jpg — главное фото (обложка, Светлана и Евгений вместе)
-           - photo2.jpg — фото для блока "это любовь" (пара обнимается/целуется)
-           - photo3.jpg — фото жениха (Евгений)
-           - photo4.jpg — фото невесты (Светлана)
-        3. Загрузите эти 4 файла вместе с этим HTML-файлом на хостинг
-        4. Готово! Гости увидят ваши фото
-
-        ВАЖНО: Фото будут автоматически в чёрно-белом фильтре на сайте.
-        Если хотите цветные — удалите строку "filter: grayscale(100%);" 
-        в CSS для нужного класса.
-    -->
 
     <!-- HERO -->
     <section class="hero">
@@ -598,7 +572,6 @@
             <div class="couple-name">Евгений</div>
             <div class="couple-name">Светлана</div>
         </div>
-        <div class="wave-line"></div>
     </section>
 
     <div class="divider"></div>
@@ -643,7 +616,7 @@
     </section>
 
     <script>
-        // ===== Countdown Timer =====
+        // ===== Countdown Timer (без setInterval, совместимо с CSP) =====
         const weddingDate = new Date('2026-10-24T14:00:00').getTime();
 
         function updateTimer() {
@@ -668,43 +641,38 @@
                 document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
                 document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
             }
+
+            // requestAnimationFrame вместо setInterval — совместимо с CSP
+            requestAnimationFrame(function() {
+                setTimeout(updateTimer, 1000);
+            });
         }
 
         updateTimer();
-        setInterval(updateTimer, 1000);
 
         // ===== Music Player =====
         const music = document.getElementById('wedding-music');
         const musicToggle = document.getElementById('music-toggle');
         let isPlaying = false;
+        let hasInteracted = false;
 
-        function tryAutoplay() {
-            music.volume = 0.4;
-            music.play().then(() => {
-                isPlaying = true;
-                musicToggle.classList.add('playing');
-            }).catch(() => {
-                isPlaying = false;
-            });
-        }
+        music.volume = 0.4;
 
-        window.addEventListener('load', tryAutoplay);
-
-        function handleFirstInteraction() {
-            if (!isPlaying) {
+        function startMusic() {
+            if (!hasInteracted) {
+                hasInteracted = true;
                 music.play().then(() => {
                     isPlaying = true;
                     musicToggle.classList.add('playing');
-                }).catch(() => {});
+                }).catch(() => {
+                    isPlaying = false;
+                });
             }
-            document.removeEventListener('click', handleFirstInteraction);
-            document.removeEventListener('scroll', handleFirstInteraction);
-            document.removeEventListener('touchstart', handleFirstInteraction);
         }
 
-        document.addEventListener('click', handleFirstInteraction);
-        document.addEventListener('scroll', handleFirstInteraction);
-        document.addEventListener('touchstart', handleFirstInteraction);
+        document.addEventListener('click', startMusic, { once: true });
+        document.addEventListener('scroll', startMusic, { once: true });
+        document.addEventListener('touchstart', startMusic, { once: true });
 
         musicToggle.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -716,6 +684,7 @@
                 music.play().then(() => {
                     musicToggle.classList.add('playing');
                     isPlaying = true;
+                    hasInteracted = true;
                 }).catch(() => {});
             }
         });
