@@ -465,7 +465,6 @@
             }
         }
     </style>
-<base target="_blank">
 </head>
 <body>
 
@@ -605,7 +604,7 @@
     <section class="gifts">
         <span class="envelope-icon">✉️</span>
         <p class="gifts-text">
-            Ваше присутствие в день нашей свадьбы — большой желанный подарок для нас с Вами комплимент
+            Ваше присутствие в день нашей свадьбы — самый главный подарок для нас!
         </p>
 
         <div class="rules-title">Правила</div>
@@ -616,8 +615,8 @@
     </section>
 
     <script>
-        // ===== Countdown Timer (без setInterval, совместимо с CSP) =====
-        const weddingDate = new Date('2026-10-24T14:00:00').getTime();
+        // ===== Countdown Timer =====
+        const weddingDate = new Date('2026-10-24T14:00:00+03:00').getTime();
 
         function updateTimer() {
             const now = new Date().getTime();
@@ -641,41 +640,19 @@
                 document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
                 document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
             }
-
-            // requestAnimationFrame вместо setInterval — совместимо с CSP
-            requestAnimationFrame(function() {
-                setTimeout(updateTimer, 1000);
-            });
         }
 
         updateTimer();
+        setInterval(updateTimer, 1000);
 
         // ===== Music Player =====
         const music = document.getElementById('wedding-music');
         const musicToggle = document.getElementById('music-toggle');
         let isPlaying = false;
-        let hasInteracted = false;
 
         music.volume = 0.4;
 
-        function startMusic() {
-            if (!hasInteracted) {
-                hasInteracted = true;
-                music.play().then(() => {
-                    isPlaying = true;
-                    musicToggle.classList.add('playing');
-                }).catch(() => {
-                    isPlaying = false;
-                });
-            }
-        }
-
-        document.addEventListener('click', startMusic, { once: true });
-        document.addEventListener('scroll', startMusic, { once: true });
-        document.addEventListener('touchstart', startMusic, { once: true });
-
-        musicToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
+        musicToggle.addEventListener('click', () => {
             if (isPlaying) {
                 music.pause();
                 musicToggle.classList.remove('playing');
@@ -684,8 +661,9 @@
                 music.play().then(() => {
                     musicToggle.classList.add('playing');
                     isPlaying = true;
-                    hasInteracted = true;
-                }).catch(() => {});
+                }).catch((err) => {
+                    console.log('Ошибка воспроизведения аудио:', err);
+                });
             }
         });
     </script>
