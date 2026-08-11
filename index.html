@@ -486,47 +486,75 @@
             margin: 0 auto;
         }
 
-        /* ===== RESPONSIVE ===== */
+       /* ===== RESPONSIVE ===== */
         @media (max-width: 480px) {
             html {
-                font-size: 16px;
+                font-size: 14px;
             }
 
+            section {
+                padding: 50px 12px;
+            }
+
+            /* Фото справа от букв на мобильном */
             .hero-content {
-                flex-direction: column;
-                gap: 25px;
+                flex-direction: row !important;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
             }
 
             .initial {
-                font-size: 100px;
+                font-size: 70px;
+            }
+
+            .name {
+                font-size: 11px;
+                letter-spacing: 2px;
+            }
+
+            .line {
+                width: 40px;
+            }
+
+            .ampersand {
+                font-size: 22px;
+                margin: 4px 0;
             }
 
             .hero-photo {
-                width: 220px;
-                height: 330px;
+                width: 145px;
+                height: 220px;
             }
 
+            /* Таймер */
             .count-number {
-                font-size: 44px;
+                font-size: 32px;
             }
 
             .countdown-grid {
-                gap: 16px;
+                gap: 8px;
             }
 
             .love-photo-img {
-                width: 260px;
-                height: 340px;
+                width: 240px;
+                height: 310px;
             }
 
+            /* Фотографии пары горизонтально рядом */
             .couple-photos {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row !important;
+                justify-content: center;
+                gap: 10px;
             }
 
             .couple-photo {
-                width: 160px;
-                height: 200px;
+                width: 135px;
+                height: 175px;
+            }
+
+            .couple-names {
+                gap: 30px;
             }
         }
     </style>
