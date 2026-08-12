@@ -309,40 +309,6 @@
             letter-spacing: 3px;
         }
 
-        /* ===== LOCATION & MAP ===== */
-        .location {
-            text-align: center;
-            padding: 70px 40px;
-        }
-
-        .location-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 300;
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
-
-        .location-text {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .map-container {
-            width: 100%;
-            height: 350px;
-            border: 1px solid #000;
-            margin-top: 20px;
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
-        }
-
-        .map-container:hover {
-            filter: grayscale(0%);
-        }
-
         /* ===== LOVE PHOTO ===== */
         .love-photo {
             position: relative;
@@ -448,7 +414,7 @@
             grid-template-columns: repeat(7, 1fr);
             gap: 10px;
             max-width: 340px;
-            margin: 0 auto 50px;
+            margin: 0 auto;
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
             font-size: 15px;
@@ -473,95 +439,6 @@
 
         .cal-day.active {
             border: 1.5px solid #000;
-        }
-
-        /* ===== FORM STYLES ===== */
-        .rsvp-form {
-            max-width: 400px;
-            margin: 40px auto 0;
-            text-align: left;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            font-weight: 400;
-        }
-
-        .radio-group {
-            display: flex;
-            gap: 20px;
-        }
-
-        .radio-label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 15px;
-            cursor: pointer;
-            font-weight: 300;
-        }
-
-        .radio-label input[type="radio"] {
-            accent-color: #000;
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        .form-select, .form-input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1.5px solid #000;
-            background: transparent;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 15px;
-            font-weight: 300;
-            outline: none;
-            border-radius: 0;
-        }
-
-        .guests-inputs-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 10px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            border: 1.5px solid #000;
-            background: #000;
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            font-size: 14px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .submit-btn:hover {
-            background: #fff;
-            color: #000;
-        }
-
-        .form-message {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 14px;
-            letter-spacing: 1px;
-            display: none;
         }
 
         /* ===== GIFTS & RULES ===== */
@@ -609,6 +486,40 @@
             margin: 0 auto;
         }
 
+        /* ===== LOCATION & MAP ===== */
+        .location {
+            text-align: center;
+            padding: 70px 40px;
+        }
+
+        .location-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .location-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border: 1px solid #000;
+            margin-top: 20px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .map-container:hover {
+            filter: grayscale(0%);
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 480px) {
             html {
@@ -619,7 +530,6 @@
                 padding: 50px 12px;
             }
 
-            /* Фото справа от букв на мобильном */
             .hero-content {
                 flex-direction: row !important;
                 align-items: center;
@@ -650,7 +560,6 @@
                 height: 220px;
             }
 
-            /* Таймер */
             .count-number {
                 font-size: 32px;
             }
@@ -664,7 +573,6 @@
                 height: 310px;
             }
 
-            /* Фотографии пары горизонтально рядом */
             .couple-photos {
                 flex-direction: row !important;
                 justify-content: center;
@@ -770,22 +678,6 @@
 
     <div class="divider"></div>
 
-    <!-- LOCATION & MAP -->
-    <section class="location">
-        <div class="location-title">Локация</div>
-        <p class="location-text">
-            Ждём вас по адресу:<br>
-            <strong>г. Минск, ул. Примерная, д. 10</strong><br>
-            (Ресторан «Название»)
-        </p>
-        <!-- Яндекс Карта -->
-        <div class="map-container">
-            <iframe src="https://yandex.ru/map-widget/v1/?ll=27.561524%2C53.902496&z=12" width="100%" height="100%" frameborder="0" allowfullscreen="true"></iframe>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
     <!-- LOVE PHOTO -->
     <section class="love-photo">
         <div class="love-bg-text" style="top: 10%; left: 5%;">это любовь</div>
@@ -835,43 +727,6 @@
             <div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day active">24</div><div class="cal-day">25</div>
             <div class="cal-day">26</div><div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div><div></div>
         </div>
-
-        <!-- ФОРМА АНКЕТЫ -->
-        <form class="rsvp-form" id="rsvpForm">
-            <div class="form-group">
-                <label class="form-label">Присутствие</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="attendance" value="Приду" checked id="att-yes">Я приду
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="attendance" value="Не смогу" id="att-no">Не смогу
-                    </label>
-                </div>
-            </div>
-
-            <div id="attendance-details">
-                <div class="form-group">
-                    <label class="form-label" for="guest-count">Количество гостей</label>
-                    <select class="form-select" id="guest-count" name="guestCount">
-                        <option value="1">1 человек</option>
-                        <option value="2">2 человека</option>
-                        <option value="3">3 человека</option>
-                        <option value="4">4 человека</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Имена гостей</label>
-                    <div class="guests-inputs-container" id="guests-inputs">
-                        <input type="text" class="form-input guest-name-input" placeholder="Имя и Фамилия гостя 1" required>
-                    </div>
-                </div>
-            </div>
-
-            <button type="submit" class="submit-btn" id="submitBtn">Отправить</button>
-            <div class="form-message" id="formMessage"></div>
-        </form>
     </section>
 
     <div class="divider"></div>
@@ -888,6 +743,21 @@
         <p class="rules-text">
             Будем благодарны, если вы воздержитесь от криков «Горько!» на празднике, ведь поцелуй — это знак выражения чувств, он не может быть по заказу.
         </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- LOCATION & MAP -->
+    <section class="location">
+        <div class="location-title">Локация</div>
+        <p class="location-text">
+            Ждём вас по адресу:<br>
+            <strong>Минский район, Ждановичи, Светлая улица 31</strong>
+        </p>
+        <!-- Яндекс Карта -->
+        <div class="map-container">
+            <iframe src="https://yandex.ru/map-widget/v1/?text=Минский+район,+Ждановичи,+Светлая+улица+31&z=15" width="100%" height="100%" frameborder="0" allowfullscreen="true"></iframe>
+        </div>
     </section>
 
     <script>
@@ -962,89 +832,6 @@
                 });
             }
         });
-
-        // ===== Dynamic Form Handling =====
-        const attYes = document.getElementById('att-yes');
-        const attNo = document.getElementById('att-no');
-        const detailsBlock = document.getElementById('attendance-details');
-        const guestCountSelect = document.getElementById('guest-count');
-        const guestsInputsContainer = document.getElementById('guests-inputs');
-
-        // Переключение «Я приду» / «Не смогу»
-        attYes.addEventListener('change', () => {
-            detailsBlock.style.display = 'block';
-            updateGuestInputs(parseInt(guestCountSelect.value));
-        });
-
-        attNo.addEventListener('change', () => {
-            detailsBlock.style.display = 'none';
-            guestsInputsContainer.innerHTML = '<input type="text" class="form-input guest-name-input" placeholder="Ваше имя и фамилия" required>';
-        });
-
-        // Динамическое изменение количества полей для имён
-        guestCountSelect.addEventListener('change', (e) => {
-            const count = parseInt(e.target.value);
-            updateGuestInputs(count);
-        });
-
-        function updateGuestInputs(count) {
-            guestsInputsContainer.innerHTML = '';
-            for (let i = 1; i <= count; i++) {
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.className = 'form-input guest-name-input';
-                input.placeholder = `Имя и Фамилия гостя ${i}`;
-                input.required = true;
-                guestsInputsContainer.appendChild(input);
-            }
-        }
-
-        // ===== Form Submission (Telegram / Webhook) =====
-        const rsvpForm = document.getElementById('rsvpForm');
-        const formMessage = document.getElementById('formMessage');
-
-        rsvpForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const isAttending = attYes.checked;
-            const nameInputs = document.querySelectorAll('.guest-name-input');
-            const names = Array.from(nameInputs).map(input => input.value.trim()).filter(val => val !== '');
-
-            const payload = {
-                attendance: isAttending ? 'Придут' : 'Не смогут',
-                guestCount: isAttending ? names.length : 0,
-                guests: names
-            };
-
-            // НАСТРОЙКА ОТПРАВКИ:
-            // Если вы используете Telegram-бота или Google Apps Script, укажите URL ниже:
-            const SCRIPT_URL = ''; // Вставьте ссылку на Google Web App или Ваш сервер/бот
-
-            if (SCRIPT_URL) {
-                fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                }).then(() => {
-                    showSuccess();
-                }).catch(() => {
-                    showSuccess(); // Для no-cors
-                });
-            } else {
-                // Если URL ещё не указан, просто выводим успех
-                console.log('Отправленные данные:', payload);
-                showSuccess();
-            }
-        });
-
-        function showSuccess() {
-            formMessage.style.display = 'block';
-            formMessage.style.color = '#2e7d32';
-            formMessage.textContent = 'Спасибо! Ваш ответ успешно отправлен.';
-            rsvpForm.reset();
-            updateGuestInputs(1);
-        }
     </script>
 </body>
 </html>
