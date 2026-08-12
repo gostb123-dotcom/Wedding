@@ -474,34 +474,47 @@
             padding: 70px 40px 50px;
         }
 
-        .envelope-icon {
-            font-size: 44px;
+        .gifts-section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 30px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
             margin-bottom: 25px;
-            display: block;
+            color: #333;
+        }
+
+        .gifts-img {
+            width: 140px;
+            height: auto;
+            margin-bottom: 25px;
+            display: inline-block;
         }
 
         .gifts-text {
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.9;
             max-width: 360px;
             margin: 0 auto 50px;
         }
 
         .rules-title {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
-            font-size: 14px;
-            letter-spacing: 5px;
+            font-size: 30px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 25px;
+            color: #333;
         }
 
-        .rings-icon {
-            font-size: 40px;
+        .rules-img {
+            width: 90px;
+            height: auto;
             margin-bottom: 20px;
-            display: block;
+            display: inline-block;
         }
 
         .rules-text {
@@ -739,7 +752,6 @@
     <!-- RSVP CARD & CALENDAR -->
     <section class="rsvp">
         <div class="rsvp-card">
-            <!-- SVG-иконка скрепки -->
             <svg class="paperclip-icon" viewBox="0 0 22 64" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 44V12a4.5 4.5 0 019 0v34a7.5 7.5 0 01-15 0V16" stroke-linecap="round"/>
             </svg>
@@ -772,15 +784,16 @@
 
     <!-- GIFTS & RULES -->
     <section class="gifts">
-        <span class="envelope-icon">✉️</span>
+        <div class="gifts-section-title">ПОЖЕЛАНИЯ ПО ПОДАРКАМ</div>
+        <img src="envelope.png" alt="Конверт" class="gifts-img">
         <p class="gifts-text">
-            Ваше присутствие в день нашей свадьбы — самый главный подарок для нас!
+            Ваше присутствие в день нашей свадьбы - самый значимый подарок для нас и Ваши копиЦки!
         </p>
 
-        <div class="rules-title">Правила</div>
-        <span class="rings-icon">💍</span>
+        <div class="rules-title">ПРИМЕЧАНИЕ</div>
+        <img src="rings.png" alt="Кольца" class="rules-img">
         <p class="rules-text">
-            Будем благодарны, если вы воздержитесь от криков «Горько!» на празднике, ведь поцелуй — это знак выражения чувств, он не может быть по заказу.
+            Будем благодарны, если вы воздержитесь от криков "Горько" на празднике, ведь поцелуй — это знак выражения чувств, он не может быть по заказу.
         </p>
     </section>
 
@@ -793,9 +806,9 @@
             Ждём вас по адресу:<br>
             <strong>Минский район, Ждановичи, Светлая улица 31</strong>
         </p>
-        <!-- Цветная Яндекс Карта с маркером -->
+        
         <div class="map-container">
-            <iframe src="https://yandex.ru/map-widget/v1/?mode=search&text=Беларусь,+Минский+район,+агрогородок+Ждановичи,+Светлая+улица,+31&z=16" width="100%" height="100%" frameborder="0" allowfullscreen="true"></iframe>
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac864f3e1e08112b18b3429ae4c714ed8cf72e4f47b5262f67f573daf4d02e0ff&amp;source=constructor" width="100%" height="100%" frameborder="0" allowfullscreen="true"></iframe>
         </div>
     </section>
 
@@ -839,15 +852,9 @@
 
         music.volume = 0.4;
 
-        // Вход по кнопке на оверлее
         enterBtn.addEventListener('click', () => {
-            // Разблокируем скролл страницы
             document.body.classList.remove('no-scroll');
-
-            // Скрываем оверлей
             overlay.classList.add('hidden');
-
-            // Запускаем музыку
             music.play().then(() => {
                 isPlaying = true;
                 musicToggle.classList.add('playing');
@@ -856,7 +863,6 @@
             });
         });
 
-        // Ручная кнопка включения/выключения
         musicToggle.addEventListener('click', () => {
             if (isPlaying) {
                 music.pause();
